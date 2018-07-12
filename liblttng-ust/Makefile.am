@@ -37,6 +37,19 @@ liblttng_ust_runtime_la_SOURCES = \
 	lttng-context-procname.c \
 	lttng-context-ip.c \
 	lttng-context-cpu-id.c \
+	lttng-context-cgroup-ns.c \
+	lttng-context-ipc-ns.c \
+	lttng-context-mnt-ns.c \
+	lttng-context-net-ns.c \
+	lttng-context-pid-ns.c \
+	lttng-context-user-ns.c \
+	lttng-context-uts-ns.c \
+	lttng-context-vuid.c \
+	lttng-context-veuid.c \
+	lttng-context-vsuid.c \
+	lttng-context-vgid.c \
+	lttng-context-vegid.c \
+	lttng-context-vsgid.c \
 	lttng-context.c \
 	lttng-events.c \
 	lttng-filter.c \
