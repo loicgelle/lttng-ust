@@ -70,6 +70,7 @@ struct ustctl_reg_msg {
 	uint32_t uint64_t_alignment;
 	uint32_t long_alignment;
 	uint32_t socket_type;			/* enum ustctl_socket_type */
+	ino_t pid_ns_inode;
 	char name[LTTNG_UST_ABI_PROCNAME_LEN];	/* process name */
 	char padding[LTTNG_UST_COMM_REG_MSG_PADDING];
 } LTTNG_PACKED;

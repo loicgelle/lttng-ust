@@ -422,6 +422,7 @@ int ustctl_recv_reg_msg(int sock,
 	uint32_t *uint32_t_alignment,
 	uint32_t *uint64_t_alignment,
 	uint32_t *long_alignment,
+	ino_t *pid_ns_inode,
 	int *byte_order,
 	char *name);	/* size LTTNG_UST_ABI_PROCNAME_LEN */
 

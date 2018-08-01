@@ -723,6 +723,7 @@ int ustcomm_send_reg_msg(int sock,
 {
 	ssize_t len;
 	struct ustctl_reg_msg reg_msg;
+	struct stat stat_buf;
 
 	reg_msg.magic = LTTNG_UST_COMM_MAGIC;
 	reg_msg.major = LTTNG_UST_ABI_MAJOR_VERSION;
@@ -740,6 +741,13 @@ int ustcomm_send_reg_msg(int sock,
 	reg_msg.socket_type = type;
 	lttng_ust_getprocname(reg_msg.name);
 	memset(reg_msg.padding, 0, sizeof(reg_msg.padding));
+
+	/* get inode number for pid namespace */
+	if (stat("/proc/self/ns/pid", &stat_buf) < 0) {
+		reg_msg.pid_ns_inode = 0;
+	} else {
+		reg_msg.pid_ns_inode = stat_buf.st_ino;
+	}
 
 	len = ustcomm_send_unix_sock(sock, &reg_msg, sizeof(reg_msg));
 	if (len > 0 && len != sizeof(reg_msg))

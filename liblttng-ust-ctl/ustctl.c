@@ -1797,6 +1797,7 @@ int ustctl_recv_reg_msg(int sock,
 	uint32_t *uint32_t_alignment,
 	uint32_t *uint64_t_alignment,
 	uint32_t *long_alignment,
+	ino_t *pid_ns_inode,
 	int *byte_order,
 	char *name)
 {
@@ -1840,6 +1841,7 @@ int ustctl_recv_reg_msg(int sock,
 	*uint32_t_alignment = reg_msg.uint32_t_alignment;
 	*uint64_t_alignment = reg_msg.uint64_t_alignment;
 	*long_alignment = reg_msg.long_alignment;
+	*pid_ns_inode = reg_msg.pid_ns_inode;
 	memcpy(name, reg_msg.name, LTTNG_UST_ABI_PROCNAME_LEN);
 	if (reg_msg.major != LTTNG_UST_ABI_MAJOR_VERSION) {
 		return -LTTNG_UST_ERR_UNSUP_MAJOR;
